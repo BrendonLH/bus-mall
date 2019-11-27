@@ -9,13 +9,13 @@ var picArray = [];
 // display 2 images to the page 
 // image ta has 3 properties 'src' 'title' and 'alt'
 
-picOne.src = './img/bag.jpg';
-picOne.title = 'Bag';
-picOne.alt = 'Bag';
+// picOne.src = './img/bag.jpg';
+// picOne.title = 'Bag';
+// picOne.alt = 'Bag';
 
-picTwo.src = './img/dog-duck.jpg';
-picTwo.title = 'Dog Duck';
-picTwo.alt = 'Dog Duck';
+// picTwo.src = './img/dog-duck.jpg';
+// picTwo.title = 'Dog Duck';
+// picTwo.alt = 'Dog Duck';
 
 // make a constructor
 
@@ -26,8 +26,16 @@ function image (src, name,) {
 
     picArray.push(this); 
 }
+
+// create random function
+
+// create image on page function
+function createOnPage() {
 new image ('bag', 'Bag');
 new image ('bag', 'Bag');
 new image ('bag', 'Bag');
+}
+createOnPage();
 
 console.table(picArray);
+// console.log(Math.random());
