@@ -1,0 +1,14 @@
+body {
+    width: 100%;
+    text-align: center;
+}
+
+section {
+    width: 100%;
+}
+
+img {
+    float: left;
+    width: 23%;
+    margin: 5%;
+}
