@@ -7,6 +7,7 @@ var picTwo = document.getElementById('picture2');
 var picThree = document.getElementById('picture3');
 var picArray = [];
 var picVote = document.getElementById('picVote');
+var voteRounds = 25;
 
 // make a constructor
 function image (src, name,) {
@@ -18,16 +19,26 @@ function image (src, name,) {
     
     picArray.push(this); 
 }
+// hide function
+function hide (elem) {
+    elem.style.display = 'none';
+}
 
 // create random helper function
-picVote.addEventListener('click', clickVote)
-var select = event.target.title;
 function clickVote() {
-    for(i = 0; i < picArray.length; i++) {
+    var select = event.target.title;
+    for(var i = 0; i < picArray.length; i++) {
         if(select === picArray[i].title) {
-            picArray.tutvote ++;
+            picArray[i].vote ++;
         }
     }
+    generateImages();
+    console.table(picArray);
+    if( voteRounds === 0) {
+        hide(picVote);
+    }
+    voteRounds --;
+    console.log(voteRounds)
 }
 
 // random number function from MDN 
@@ -42,7 +53,6 @@ function generateImages() {
     picOne.title = picArray[indexOne].title;
     picOne.alt = picArray[indexOne].alt 
     picArray[indexOne].viewed ++;
-    picArray[indexOne].vote ++;
     
     var indexTwo = randomIndex(picArray.length);
     while(indexTwo === indexOne) {
@@ -53,7 +63,6 @@ function generateImages() {
     picTwo.title = picArray[indexTwo].title;
     picTwo.alt = picArray[indexTwo].alt;
     picArray[indexTwo].viewed ++;
-    picArray[indexTwo].vote ++;
     // picIndex.push(indexTwo);
     
     var indexThree = randomIndex(picArray.length);
@@ -66,7 +75,6 @@ function generateImages() {
     picThree.title = picArray[indexThree].title
     picThree.alt = picArray[indexThree].alt
     picArray[indexThree].viewed ++;
-    picArray[indexThree].vote ++;
     console.log(indexOne, indexTwo, indexThree);
     // picIndex.push(indexOne, indexTwo, indexThree);   
 }
@@ -97,6 +105,7 @@ function createOnPage() {
 }
 createOnPage();
 generateImages();
+picVote.addEventListener('click', clickVote)
 
 // console.log(picIndex);
 console.table(picArray);
