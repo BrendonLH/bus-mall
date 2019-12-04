@@ -25,7 +25,7 @@ var select = event.target.title;
 function clickVote() {
     for(i = 0; i < picArray.length; i++) {
         if(select === picArray[i].title) {
-            picArray.vote ++;
+            picArray.tutvote ++;
         }
     }
 }
