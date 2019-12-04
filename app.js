@@ -10,7 +10,7 @@ var picVote = document.getElementById('picVote');
 var voteRounds = 25;
 
 // make a constructor
-function image (src, name,) {
+function image (src, name) {
     this.src = `../img/${src}.jpg`;
     this.title = name;
     this.alt = name;
