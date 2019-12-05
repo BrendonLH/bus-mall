@@ -6,8 +6,9 @@ var picOne = document.getElementById('picture1');
 var picTwo = document.getElementById('picture2');
 var picThree = document.getElementById('picture3');
 var picArray = [];
+// container for my images
 var picVote = document.getElementById('picVote');
-var voteRounds = 25;
+var voteRounds = 5;
 var pictureContainer = [picOne, picTwo, picThree];
 
 // make a constructor
@@ -25,7 +26,7 @@ function hide (elem) {
     elem.style.display = 'none';
 }
 
-// create random helper function
+// create random helper function/ event handler
 function clickVote() {
     var select = event.target.title;
     for(var i = 0; i < picArray.length; i++) {
@@ -38,9 +39,24 @@ function clickVote() {
     console.table(picArray);
     if( voteRounds === 0) {
         hide(picVote);
+        analysis();
     }
     voteRounds --;
     console.log(voteRounds)
+}
+
+
+
+// builds the list and and adds views & votes
+function analysis() {
+    var results = document.getElementById('list');
+    var ulEl = document.createElement('ul');
+    for(var i = 0; i < picArray.length; i++) {
+        var liEl = document.createElement('li');
+        liEl.textContent = `${picArray[i].title} : ${picArray[i].vote} Votes & ${picArray[i].viewed} views`
+        ulEl.appendChild(liEl);
+    }
+    resultsList.appendChild(ulEl);
 }
 
 // random number function from MDN 
