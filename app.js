@@ -10,6 +10,7 @@ var picArray = [];
 var picVote = document.getElementById('picVote');
 var voteRounds = 5;
 var pictureContainer = [picOne, picTwo, picThree];
+var chartContainer = document.getElementById('voteChart');
 
 // make a constructor
 function image (src, name) {
@@ -40,6 +41,7 @@ function clickVote() {
     if( voteRounds === 0) {
         hide(picVote);
         analysis();
+        makeAChart();
     }
     voteRounds --;
     console.log(voteRounds)
@@ -108,7 +110,28 @@ function generateImages() {
         // console.log(indexOne, indexTwo, indexThree);
         // picIndex.push(indexOne, indexTwo, indexThree);   
         
+        // create the chart
+        function makeAChart() {
+            var ctx = document.getElementById('voteChart').getContext('2d');
+            var chart = new Chart(ctx, {
+                // The type of chart we want to create
+                type: 'pie',
         
+                // The data for our dataset
+                data: {
+                    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                    datasets: [{
+                        label: 'My First dataset',
+                        backgroundColor: 'rgb(255, 99, 132)',
+                        borderColor: 'rgb(255, 99, 132)',
+                        data: [0, 10, 5, 2, 20, 30, 45]
+                    }]
+                },
+        
+                // Configuration options go here
+                options: {}
+            });
+        }
         // create image on page function
         function createOnPage() {
             new image ('bag', 'Bag');
