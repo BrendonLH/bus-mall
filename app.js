@@ -8,7 +8,7 @@ var picThree = document.getElementById('picture3');
 var picArray = [];
 // container for my images
 var picVote = document.getElementById('picVote');
-var voteRounds = 20;
+var voteRounds = 5;
 var pictureContainer = [picOne, picTwo, picThree];
 
 // chart data
@@ -17,6 +17,7 @@ var chartContainer = document.getElementById('voteChart');
 var chartLabels = [];
 var votesArray = [];
 var viewsArray = [];
+var chartColors = [];
 
 // make a constructor
 function image (src, name) {
@@ -90,12 +91,16 @@ function makeChartData() {
     chartLabels = [];
     viewsArray = [];
     votesArray = [];
+    chartColors = ['red', 'blue', 'green', 'orange', 'yellow', 'pink', 'salmon', 'deeppink', 'coral', 'violet', 'purple', 'lime', 'teal', 'darkseagreen','yellowgreen', 'aqua', 'aquamarine', 'powderblue', 'mediumslteblue', 'cornsilk', 'tan', 'rosybrown']
     
     // this pushes all the data into the arrays
     for(var i = 0; i < picArray.length; i ++) {
         chartLabels.push(picArray[i].title);
         viewsArray.push(picArray[i].viewed);
         votesArray.push(picArray[i].vote);
+    }
+    for(var j = 0; j < chartColors.length; j ++) {
+        chartColors.push.randomIndex;
     }
 }
 // global variables for chart arrays
@@ -106,7 +111,7 @@ function makeAChart() {
     var ctx = document.getElementById('voteChart').getContext('2d');
     var chart = new Chart(ctx, {
         // The type of chart we want to create
-        type: 'bar',
+        type: 'pie',
         
         // The data for our dataset
         data: {
@@ -114,13 +119,13 @@ function makeAChart() {
             datasets: [
                 {
                 label: ['Votes'],
-                backgroundColor: 'rgb(34, 212, 40)',
-                borderColor: 'rgb(184, 242, 235)',
+                backgroundColor: chartColors,
+                borderColor: 'darkgrey',
                 data: votesArray
                 },
                 {
                 label: ['Views'],
-                backgroundColor: 'rgb(184, 242, 235)',
+                backgroundColor: chartColors,
                 borderColor: 'rgb(34, 212, 40)',
                 data: viewsArray
                 }
