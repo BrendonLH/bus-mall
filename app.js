@@ -8,7 +8,7 @@ var picThree = document.getElementById('picture3');
 var picArray = [];
 // container for my images
 var picVote = document.getElementById('picVote');
-var voteRounds = 5;
+var voteRounds = 20;
 var pictureContainer = [picOne, picTwo, picThree];
 
 // chart data
@@ -48,15 +48,17 @@ function clickVote() {
     if( voteRounds === 0) {
         hide(picVote);
         makeAChart();
+        analysis();
     }
     voteRounds --;
     console.log(voteRounds)
 }
 
 
+
 // builds the list and and adds views & votes
 function analysis() {
-    var results = document.getElementById('list');
+    var results = document.getElementById('resultsList');
     var ulEl = document.createElement('ul');
     for(var i = 0; i < picArray.length; i++) {
         var liEl = document.createElement('li');
@@ -118,16 +120,16 @@ function makeAChart() {
             labels: chartLabels,
             datasets: [
                 {
-                label: ['Votes'],
-                backgroundColor: chartColors,
-                borderColor: 'darkgrey',
-                data: votesArray
+                    label: ['Votes'],
+                    backgroundColor: chartColors,
+                    borderColor: 'darkgrey',
+                    data: votesArray
                 },
                 {
-                label: ['Views'],
-                backgroundColor: chartColors,
-                borderColor: 'rgb(34, 212, 40)',
-                data: viewsArray
+                    label: ['Views'],
+                    backgroundColor: chartColors,
+                    borderColor: 'rgb(34, 212, 40)',
+                    data: viewsArray
                 }
             ]
             
@@ -137,24 +139,24 @@ function makeAChart() {
         // Configuration options go here
         options: {
             title: {
-            display:true,
-            text: 'Voting results',
-            fontSize:25,
-        },
-    }
-});
+                display:true,
+                text: 'Voting results',
+                fontSize:25,
+            },
+        }
+    });
 }
 // picOne.src = picArray[indexOne].src;
-    // picOne.title = picArray[indexOne].title;
-    // picOne.alt = picArray[indexOne].alt 
-    // picArray[indexOne].viewed ++;
+// picOne.title = picArray[indexOne].title;
+// picOne.alt = picArray[indexOne].alt 
+// picArray[indexOne].viewed ++;
+
+// var indexTwo = randomIndex(picArray.length);
+// while(indexTwo === indexOne) {
+    //     indexTwo = randomIndex(picArray.length);
+    // }
     
-    // var indexTwo = randomIndex(picArray.length);
-    // while(indexTwo === indexOne) {
-        //     indexTwo = randomIndex(picArray.length);
-        // }
-        
-        // picTwo.src = picArray[indexTwo].src;
+    // picTwo.src = picArray[indexTwo].src;
     // picTwo.title = picArray[indexTwo].title;
     // picTwo.alt = picArray[indexTwo].alt;
     // picArray[indexTwo].viewed ++;
@@ -173,7 +175,7 @@ function makeAChart() {
         // console.log(indexOne, indexTwo, indexThree);
         // picIndex.push(indexOne, indexTwo, indexThree);   
         
-
+        
         // create image on page function
         function createOnPage() {
             new image ('bag', 'Bag');
@@ -202,6 +204,10 @@ function makeAChart() {
         generateImages();
         console.table(picArray);
         picVote.addEventListener('click', clickVote)
+        var voteString = JSON.stringify(votesArray);
+        localStorage.setItem('votes1', voteString);
+        
+        
         
         // console.log(picIndex);
         // console.log(Math.random());
