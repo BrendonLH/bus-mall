@@ -2,6 +2,7 @@ body {
     width: 100%;
     text-align: center;
     margin: auto;
+    font-family: 'Oswald', sans-serif;
 }
 
 section {
@@ -12,4 +13,23 @@ img {
     float: left;
     width: 23%;
     margin: 5%;
+}
+#resultsList {
+    font-size: 20px;
+    position:absolute;
+    right: 500px;
+    top:150px;
+    z-index: -1;
+}
+h1 {
+    font-family: 'Merriweather', serif;
+    font-size: x-large;
+}
+p {
+    max-width: 500px;
+    position:absolute;
+    top: 570px;
+    right: 500px;
+    z-index: -1;
+    
 }
